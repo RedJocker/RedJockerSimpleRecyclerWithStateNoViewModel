@@ -43,7 +43,7 @@ class MyListAdapter(val listModel: List<ModelWithState>, val service: MyListAdap
                 notifyItemChanged(adapterPosition)
                 val currentItem = service.getCurrentItem()
 
-                if(currentItem != null) {
+                if(currentItem != null && currentItem != modelItem) {
                     currentItem.isSelected = false
                     println("unchecking $currentItem")
                     notifyItemChanged(currentItem.index)
