@@ -21,8 +21,9 @@ class MyListAdapter(val listModel: List<ModelWithState>, val service: MyListAdap
     }
 
     override fun onBindViewHolder(holder: ListItem, position: Int) {
-        println("onBindViewHolder $position ${listModel[position]} ")
-        holder.bind(position)
+        val modelItem = listModel[position]
+        println("onBindViewHolder $position $modelItem ")
+        holder.bind(modelItem)
     }
 
 
@@ -31,8 +32,7 @@ class MyListAdapter(val listModel: List<ModelWithState>, val service: MyListAdap
         private val textView = itemView.findViewById<TextView>(R.id.itemTextView)
         private val checkBox = itemView.findViewById<CheckBox>(R.id.checkbox)
 
-        fun bind(position: Int) {
-            val modelItem = listModel[position]
+        fun bind(modelItem: ModelWithState) {
 
             textView.text = modelItem.text
             checkBox.isChecked = modelItem.isSelected
